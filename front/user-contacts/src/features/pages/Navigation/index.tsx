@@ -1,13 +1,15 @@
 
+import axios from "axios";
 import { useContext, useEffect } from "react";
 import { ButtonThird } from "../../../components/button"
+import { ModalEditUser } from "../../../components/Contact/ModalEditUser";
 import { Title1 } from "../../../components/texts"
-import { DataContext } from "../../../Context";
+import { DataContext, IUser } from "../../../Context";
 import { instance } from "../../service/axios";
 import { DivButtonNav, StyledNav } from "./styled"
 
 export const NavigationDash = () => {
-    const {openModalEdit, setUser, token, update, modalEdit, openModal} = useContext(DataContext);
+    const {openModalEditUser, navigate, setUser, token, update, setUpdate} = useContext(DataContext);
 
     const idUser = localStorage.getItem("id");
 
@@ -22,19 +24,34 @@ export const NavigationDash = () => {
             }
         };
         userInfo();
-    }, [update, modalEdit]);
+    }, [update, ModalEditUser]);
+
+
+    const editUser = async (id: string, data: IUser): Promise<void> => {
+        setUpdate(true);
+        try {
+            instance.defaults.headers.authorization = `Bearer ${token}`;
+            await instance.patch(`/contacts/${id}`, data);
+        } catch (error: any) {
+            if(axios.isAxiosError(error)){
+                console.log(error.message)
+            }
+        } finally {
+            setUpdate(false);
+        }
+    };
 
     return(
         <StyledNav>
             <Title1>Agenda</Title1>
             <DivButtonNav>
-            <ButtonThird onClick={() => {openModalEdit()}}>
-                    Editar Perfil </ButtonThird>
+                <ButtonThird onClick={() => { openModalEditUser()}}>
+                        Editar Perfil </ButtonThird>
 
-            <ButtonThird
-                onClick={() =>openModal()}>
-                Logout
-            </ButtonThird>
+                <ButtonThird
+                    onClick={() => [navigate("/"), localStorage.clear()]}>
+                    Logout
+                </ButtonThird>
             </DivButtonNav>
         </StyledNav>
     )

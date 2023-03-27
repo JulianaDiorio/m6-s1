@@ -12,6 +12,12 @@ export const Title2 = styled.h2`
   color: var(--second-color);
 `;
 
+export const Title3 = styled.h2`
+  font-size: var(--Title2-size);
+  font-weight: var(--Title-weight-Bold);
+  color: var(--third-color);
+`;
+
 export const Headline = styled.h4`
   font-size: var(--Headline-size);
   font-weight: var(--Title-weight-Regular);

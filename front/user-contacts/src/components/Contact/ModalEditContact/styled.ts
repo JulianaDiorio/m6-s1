@@ -56,6 +56,7 @@ export const ButtonClose = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+  padding: 0.4rem;
 `;
 
 export const LabelModal = styled.label`

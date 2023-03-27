@@ -12,7 +12,7 @@ import {
 } from "./styled";
 import { RiCloseLine } from "react-icons/ri";
 import { useContext } from "react";
-import { DataContext, IContact, IContactUpdate } from "../../../Context";
+import { DataContext, IContactUpdate } from "../../../Context";
 import { instance } from "../../../features/service/axios";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -20,7 +20,6 @@ import { FieldValues, useForm } from "react-hook-form";
 
 export const ModalEdit = ({id}: any) => {
     const { sucess, negative, openModalEdit, setUpdate, especificUser } = useContext(DataContext);
-    console.log(id, "cagoooooooooooooooooooooooooou")
 
     const onUpdateContact = (id: string, data: FieldValues) => Edit(id, data)
 
@@ -50,13 +49,13 @@ export const ModalEdit = ({id}: any) => {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<IContact>({ resolver: yupResolver(formYup) });
+    } = useForm<IContactUpdate>({ resolver: yupResolver(formYup) });
 
 
     return (
         <SectionModal>
             <FormModal 
-            onSubmit={ handleSubmit((data) => onUpdateContact(especificUser, data))}
+            onSubmit={ handleSubmit((data) => onUpdateContact(especificUser.id, data))}
             >
                 <DivTitleModal>
                     <TitleRegister>Editar Contato</TitleRegister>
@@ -79,7 +78,7 @@ export const ModalEdit = ({id}: any) => {
                     <InputModal
                         type="text"
                         placeholder="Name"
-                        // {contact.name}
+                        defaultValue={especificUser.name}
                         {...register("name")}
                         />
                     </LabelModal>
@@ -89,6 +88,7 @@ export const ModalEdit = ({id}: any) => {
                     <InputModal
                         type="text"
                         placeholder="E-mail"
+                        defaultValue={especificUser.email}
                         {...register("email")}
                     />
                     </LabelModal>
@@ -98,6 +98,7 @@ export const ModalEdit = ({id}: any) => {
                     <InputModal
                         type="text"
                         placeholder="Telefone"
+                        defaultValue={especificUser.phone}
                         {...register("phone")}
                     />
                     </LabelModal>

@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { ButtonThird } from "../../../components/button";
 import { Contacts } from "../../../components/Contact";
-import { Title2 } from "../../../components/texts";
+import { Title3 } from "../../../components/texts";
 import { DataContext } from "../../../Context";
 import { instance } from "../../service/axios";
 import {
@@ -11,6 +11,7 @@ import {
 import { Main } from "../Login/styled";
 import { Modal } from "../../../components/Contact/ModalNewContact";
 import { NavigationDash } from "../Navigation";
+import { ModalEditUser } from "../../../components/Contact/ModalEditUser";
 
 
 
@@ -25,6 +26,7 @@ export const Dashboard = () => {
         modal,
         setCont,
         update,
+        userEdit
 
     } = useContext(DataContext);
 
@@ -42,18 +44,20 @@ export const Dashboard = () => {
             }
         };
         userInfo();
-    }, [update, modalEdit]);
+    }, [update, modalEdit, userEdit]);
 
     return (
         <>
+        
         <NavigationDash />
         <Main>
             {modal && <Modal />}
+            {userEdit && <ModalEditUser />}
             <HeaderDashboard>
-                <Title2> Olá, {user?.name} </Title2>
+                <Title3> Olá, {user?.name} </Title3>
             </HeaderDashboard>
             <DivDashboard>
-                <Title2>Contatos </Title2>
+                <Title3>Contatos </Title3>
                 <ButtonThird onClick={() => openModal()}>
                     Novo
                 </ButtonThird>

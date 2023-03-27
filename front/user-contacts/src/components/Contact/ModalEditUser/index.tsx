@@ -1,7 +1,7 @@
 
 import { RiCloseLine } from "react-icons/ri";
 import { useContext } from "react";
-import { DataContext, IUser} from "../../../Context";
+import { DataContext, IUserUpdate} from "../../../Context";
 import { instance } from "../../../features/service/axios";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -17,23 +17,25 @@ import {     ButtonClose,
     SectionModal,
     TitleRegister, } from "../ModalEditContact/styled";
 
-export const ModalEdit = ({id}: any) => {
-    const { sucess, negative, openModalEdit, setUpdate, especificUser } = useContext(DataContext);
+export const ModalEditUser = ({ userId }: any) => {
+    const { sucess, negative, openModalEditUser, setUpdate, user, token, setUser } = useContext(DataContext);
 
-    const onUpdateContact = (id: string, data: FieldValues) => Edit(id, data)
+    const onUpdateUser = (id: string, data: FieldValues) => Edit(id, data)
 
     const Edit = async (id: string, data: FieldValues) => {
+        setUpdate(true);
         
         try {
-            const response = await instance.patch(`/contacts/${id}`, data);
-            setUpdate(true);
-            sucess("Contato alterado com sucesso!");
+            instance.defaults.headers.authorization = `Bearer ${token}`;
+            const response = await instance.patch(`/users/${id}`, data);
+            setUser(response.data)
+            sucess("Perfil alterado com sucesso!");
         } catch (error) {
-            negative("Contato não pode ser alterado!");
+            negative("Perfil não pode ser alterado!");
             console.log(error);
         } finally {
+            openModalEditUser();
             setUpdate(false);
-            openModalEdit();
         }
     };
 
@@ -48,17 +50,17 @@ export const ModalEdit = ({id}: any) => {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<IUser>({ resolver: yupResolver(formYup) });
+    } = useForm<IUserUpdate>({ resolver: yupResolver(formYup) });
 
 
     return (
         <SectionModal>
             <FormModal 
-            onSubmit={ handleSubmit((data) => onUpdateContact(especificUser, data))}
+            onSubmit={ handleSubmit((data: IUserUpdate) => onUpdateUser(user.id, data))}
             >
                 <DivTitleModal>
-                    <TitleRegister>Editar Contato</TitleRegister>
-                    <ButtonClose onClick={() => openModalEdit()}>
+                    <TitleRegister>Editar perfil</TitleRegister>
+                    <ButtonClose onClick={() => openModalEditUser()}>
                         {" "}
                         <RiCloseLine
                             style={{
@@ -66,7 +68,7 @@ export const ModalEdit = ({id}: any) => {
                                 width: "1.2rem",
                                 height: "1.2rem",
                             }}
-                        />{" "}
+                            />{" "}
                     </ButtonClose>
                 </DivTitleModal>
 
@@ -77,7 +79,7 @@ export const ModalEdit = ({id}: any) => {
                     <InputModal
                         type="text"
                         placeholder="Name"
-                        // {contact.name}
+                        defaultValue={user.name}
                         {...register("name")}
                         />
                     </LabelModal>
@@ -87,6 +89,7 @@ export const ModalEdit = ({id}: any) => {
                     <InputModal
                         type="text"
                         placeholder="E-mail"
+                        defaultValue={user.email}
                         {...register("email")}
                     />
                     </LabelModal>
@@ -96,6 +99,7 @@ export const ModalEdit = ({id}: any) => {
                     <InputModal
                         type="text"
                         placeholder="Telefone"
+                        defaultValue={user.phone}
                         {...register("phone")}
                     />
                     </LabelModal>

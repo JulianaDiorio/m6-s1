@@ -55,14 +55,17 @@ interface IUserContext {
     token: string | null,
     openModal: () => void,
     openModalEdit: () => void,
+    openModalEditUser: () => void,
     modal: boolean,
     modalEdit: boolean,
     cont: IContact[],
     setCont: React.Dispatch<React.SetStateAction<IContact[]>>,
     update: boolean,
     setUpdate: React.Dispatch<React.SetStateAction<boolean>>,
-    especificUser: string,
-    setEspecificUser: React.Dispatch<React.SetStateAction<string>>,
+    especificUser: IContact,
+    setEspecificUser: React.Dispatch<React.SetStateAction<IContact>>,
+    userEdit: boolean,
+    setUserEdit: React.Dispatch<React.SetStateAction<boolean>>,
 }
 
 /* CRIA O CONTEXTO, EXPORTA A LÓGICA POR MEIO DO PROVIDER */
@@ -75,9 +78,9 @@ export const UserProvider = ({ children }: IChildrenProps) => {
     const [update, setUpdate] = useState<boolean>(false);
     const [modal, setModal] = useState<boolean>(false);
     const [modalEdit, setModalEdit] = useState<boolean>(false);
-    const [especificUser, setEspecificUser] = useState<string>("");
+    const [especificUser, setEspecificUser] = useState<IContact>({} as IContact);
+    const [userEdit, setUserEdit] = useState<boolean>(false);
     const navigate = useNavigate();
-console.log(update)
     const sucess = (text: string) => {
         toast.success(text, {
             position: "top-center",
@@ -110,6 +113,10 @@ console.log(update)
         setModalEdit(!modalEdit);
     };
 
+    const openModalEditUser = () => {
+        setUserEdit(!userEdit);
+    }
+
     return (
         <DataContext.Provider
             value={{
@@ -132,7 +139,10 @@ console.log(update)
                 update,
                 setUpdate,
                 especificUser, 
-                setEspecificUser
+                setEspecificUser,
+                userEdit,
+                setUserEdit,
+                openModalEditUser
             }}
         >
             {children}

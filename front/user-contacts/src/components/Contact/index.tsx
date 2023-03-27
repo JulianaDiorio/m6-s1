@@ -65,7 +65,7 @@ export const Contacts = () => {
                                 <DeleteContact>
                                     <ButtonDeleteorEdit id={contact.id}
                                         onClick={() => {
-                                            setEspecificUser(contact.id)
+                                            setEspecificUser(contact)
                                             openModalEdit()}}
 
                                         >

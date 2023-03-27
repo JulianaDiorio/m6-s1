@@ -24,7 +24,8 @@ export const retrieveEspecificUserController = async (
   req: Request,
   res: Response
 ) => {
-  const user = await retrieveEspecificUserService(req.user.id);
+  const userData: IUserUpdate = req.body;
+  const user = await retrieveEspecificUserService(userData, req.params.id);
   return res.status(200).json(user);
 };
 
@@ -36,7 +37,7 @@ export const loginController = async (req: Request, res: Response) => {
 
 export const updateUserController = async (req: Request, res: Response) => {
   const userData: IUserUpdate = req.body;
-  const data = await updateUserService(userData, req.params.product_id);
+  const data = await updateUserService(userData, req.user.id);
   return res.status(200).send(data);
 };
 

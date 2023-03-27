@@ -20,7 +20,7 @@ export class User {
   @Column({ length: 120 })
   name: string;
 
-  @Column({ length: 50, unique: true })
+  @Column({ length: 50 })
   email: string;
 
   @Column({ length: 18 })
@@ -28,9 +28,6 @@ export class User {
 
   @Column({ length: 120 })
   password: string;
-
-  // @Column({ default: true })
-  // isAdm: boolean;
 
   @Column({ nullable: true, default: true })
   isActive: boolean;

@@ -14,13 +14,11 @@ export const createContactService = async (
   const userRepo = AppDataSource.getRepository(User);
 
   const user = await userRepo.findOneBy({ id: token });
-  console.log(user);
   if (nameContact) {
     throw new AppError("Contact as already registered", 409);
   }
 
   const contact = contactRepo.create({ ...contactData, user: user });
-  console.log(contact);
 
   await contactRepo.save(contact);
   return contact;

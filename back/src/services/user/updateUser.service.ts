@@ -9,12 +9,10 @@ export const updateUserService = async (
   const userRepo = AppDataSource.getRepository(User);
   const user = await userRepo.findOneBy({ id: user_id });
 
-  const updateUser = userRepo.create({
+  const updateUser = await userRepo.save({
     ...user,
     ...body,
   });
-
-  await userRepo.save(updateUser);
 
   return updateUser;
 };

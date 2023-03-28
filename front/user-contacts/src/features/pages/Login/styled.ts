@@ -9,5 +9,10 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-evenly;
+  padding-top: 4rem;
+
+  @media (max-width: 600px) {
+    padding-top: 0;
+  }
 `;

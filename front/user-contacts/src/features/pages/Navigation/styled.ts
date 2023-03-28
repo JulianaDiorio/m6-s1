@@ -8,6 +8,8 @@ export const StyledNav = styled.nav`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  position: fixed;
+  z-index: 1;
 
   @media (max-width: 768px) {
     height: 3.5rem;

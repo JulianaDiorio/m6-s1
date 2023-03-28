@@ -5,7 +5,9 @@ import { Title3 } from "../../../components/texts";
 import { DataContext } from "../../../Context";
 import { instance } from "../../service/axios";
 import {
+    DivBorder,
     DivDashboard,
+    DivSalutation,
     HeaderDashboard,
 } from "./styled";
 import { Main } from "../Login/styled";
@@ -55,13 +57,15 @@ export const Dashboard = () => {
             {userEdit && <ModalEditUser />}
             <HeaderDashboard>
                 <Title3> Olá, {user?.name} </Title3>
-            </HeaderDashboard>
-            <DivDashboard>
+                <DivBorder />
+                <DivSalutation>
+
                 <Title3>Contatos </Title3>
                 <ButtonThird onClick={() => openModal()}>
                     Novo
                 </ButtonThird>
-            </DivDashboard>
+                </DivSalutation>
+            </HeaderDashboard>
             <Contacts />
         </Main></>
     );

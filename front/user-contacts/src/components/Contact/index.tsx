@@ -48,10 +48,21 @@ export const Contacts = () => {
         }
     };
 
+    const names = cont
+     cont.sort(function(a, b) { 
+        if (a.name < b.name) { 
+            return -1
+        }
+        if (a.name > b.name) {
+            return 1
+        }
+        return 0})
+        console.log(names)
+
     return (
         <ListContact>
             <ContainerContacts>
-                {cont.map((contact) => (
+                {names.map((contact) => (
                     <ContactItem key={contact.id}>
                         {modalEdit && (<ModalEdit id={contact.id}/>)}
                         <DivContact>

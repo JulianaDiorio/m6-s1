@@ -29,7 +29,14 @@ export const ButtonThird = styled.button`
   background-color: var(--third-color);
   opacity: 0.7;
   padding: 0.8rem 1rem;
+  height: 2.5rem;
   border: none;
   border-radius: var(--Border-radius);
   color: white;
+  white-space: nowrap;
+  margin-left: 1rem;
+
+  @media (max-width: 768px) {
+    padding: 0.4rem;
+  }
 `;

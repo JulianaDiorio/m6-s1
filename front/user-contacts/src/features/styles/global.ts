@@ -66,6 +66,7 @@ export const GlobalStyle = createGlobalStyle`
     --Title1-size: 40px;
     --Title2-size: 18px;
     --Title3-size: 14px;
+    --Title4-size: 24px;
     --Headline-size: 12px;
 
     --Border-radius: 6px;

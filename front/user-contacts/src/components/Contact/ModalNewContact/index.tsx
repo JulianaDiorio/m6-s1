@@ -18,6 +18,7 @@ import { instance } from "../../../features/service/axios";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
+import { DivForm } from "../ModalEditContact/styled";
 
 export const Modal = () => {
     const { sucess, negative, openModal, setUpdate } = useContext(DataContext);
@@ -65,23 +66,29 @@ export const Modal = () => {
                         />{" "}
                     </ButtonClose>
                 </DivTitleModal>
+                <DivForm>
                 <LabelModal htmlFor="name">
-                    {" "}
-                    {/* <SpanLabel>Nome</SpanLabel> */}
+                    Nome:
                     <InputModal
                         type="text"
                         placeholder=" Nome"
                         {...register("name")}
                     />
+                </LabelModal>
+    
                     <ErrorRegister>{errors.name?.message}</ErrorRegister>
-                    
+                <LabelModal htmlFor="email">
+                    E-mail:
                     <InputModal
                         type="text"
                         placeholder="E-mail"
                         {...register("email")}
                     />
+                </LabelModal>
+                
                     <ErrorRegister>{errors.email?.message}</ErrorRegister>
-                    {/* <SpanLabel>Telefone</SpanLabel> */}
+                <LabelModal htmlFor="phone">
+                    Telefone:
                     <InputModal
                         type="text"
                         placeholder="Telefone"
@@ -93,6 +100,7 @@ export const Modal = () => {
                 <ButtonRegister type="submit">
                     Cadastrar
                 </ButtonRegister>
+                </DivForm>
             </FormModal>
         </SectionModal>
     );

@@ -1,18 +1,21 @@
 import styled from "styled-components";
 
 export const SectionModal = styled.section`
-  position: fixed;
+  position: absolute;
   width: 100vw;
   height: 100vh;
+  top: 0;
+  left: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 `;
 
 export const FormModal = styled.form`
-  width: 30%;
-  height: 45%;
+  width: 40%;
+  height: auto;
   border-radius: var(--Border-radius);
   background-color: var(--primary-color);
   opacity: 1;
@@ -21,7 +24,7 @@ export const FormModal = styled.form`
   align-items: center;
   justify-content: space-between;
 
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     width: 90%;
     height: 60%;
   }
@@ -54,16 +57,26 @@ export const ButtonClose = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+  margin-right: 0.5rem;
+  padding: 0.4rem;
 `;
 
 export const LabelModal = styled.label`
   position: relative;
-  margin: 0.8rem;
+  margin: 0.5rem auto;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  align-items: center;
+  width: 95%;
+  align-items: flex-start;
 `;
+// export const LabelModal = styled.label`
+//   position: relative;
+//   margin: 0.8rem;
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+//   align-items: center;
+// `;
 
 export const SpanLabel = styled.span`
   position: absolute;
@@ -81,7 +94,7 @@ export const InputModal = styled.input`
   border: 1px solid white;
   color: var(--second-color);
   background-color: var(--fourth-color);
-  width: 85%;
+  width: 100%;
   margin-top: 0.5rem;
 `;
 

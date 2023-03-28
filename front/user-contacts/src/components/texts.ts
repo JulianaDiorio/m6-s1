@@ -4,6 +4,10 @@ export const Title1 = styled.h1`
   font-size: var(--Title1-size);
   font-weight: var(--Title-weight-Bold);
   color: var(--third-color);
+
+  @media (max-width: 768px) {
+    font-size: var(--Title4-size);
+  }
 `;
 
 export const Title2 = styled.h2`

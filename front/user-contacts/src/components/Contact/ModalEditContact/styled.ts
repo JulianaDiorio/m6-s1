@@ -10,11 +10,12 @@ export const SectionModal = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 `;
 
 export const FormModal = styled.form`
-  width: 30%;
-  height: 45%;
+  width: 40%;
+  height: auto;
   border-radius: var(--Border-radius);
   background-color: var(--primary-color);
   opacity: 1;
@@ -23,7 +24,7 @@ export const FormModal = styled.form`
   align-items: center;
   justify-content: space-between;
 
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     width: 90%;
     height: 60%;
   }
@@ -57,14 +58,15 @@ export const ButtonClose = styled.button`
   border: none;
   cursor: pointer;
   padding: 0.4rem;
+  margin-right: 0.5rem;
 `;
 
 export const LabelModal = styled.label`
   position: relative;
-  margin: 0 auto;
+  margin: 0.5rem auto;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 95%;
   align-items: flex-start;
 `;
 

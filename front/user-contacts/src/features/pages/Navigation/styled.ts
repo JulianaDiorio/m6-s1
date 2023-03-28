@@ -8,11 +8,20 @@ export const StyledNav = styled.nav`
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+
+  @media (max-width: 768px) {
+    height: 3.5rem;
+  }
 `;
 
 export const DivButtonNav = styled.div`
-  width: 13%;
+  width: 17%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 0 0.5rem 0 0.5rem;
+
+  @media (max-width: 600px) {
+    width: 60%;
+    justify-content: space-around;
+  }
 `;

@@ -30,11 +30,10 @@ export const HeaderDashboard = styled.header`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid var(--primary-color);
   border-bottom: 1px solid var(--primary-color);
   margin-bottom: 1rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     width: 90%;
     flex-direction: column;
     justify-content: space-evenly;
@@ -67,7 +66,7 @@ export const DivDashboard = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     width: 90%;
     height: 4rem;
   }

@@ -58,8 +58,8 @@ export const ContactItem = styled.li`
   justify-content: space-between;
   padding: 0 1rem;
 
-  @media (max-width: 768px) {
-    width: 80%;
+  @media (max-width: 600px) {
+    width: 90%;
   }
 `;
 

@@ -20,9 +20,13 @@ contactsRoutes.post(
   // isAdmMiddleware,
   createContactController
 );
-contactsRoutes.get("", listContactsController);
+contactsRoutes.get("", authTokenMiddleware, listContactsController);
 
-contactsRoutes.get("/:id", retrieveEspecificContactController);
+contactsRoutes.get(
+  "/:id",
+  authTokenMiddleware,
+  retrieveEspecificContactController
+);
 
 contactsRoutes.patch(
   "/:id",

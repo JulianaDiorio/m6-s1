@@ -3,7 +3,7 @@ import { User } from "../../entities/user.entity";
 import { AppError } from "../../errors/appErrors";
 
 export const deleteUserService = async (user_id: string) => {
-  if (!user_id) throw new AppError("Id inválido", 404);
+  if (!user_id) throw new AppError("Invalid id", 404);
 
   const usersRepo = AppDataSource.getRepository(User);
   const user = await usersRepo.findOneBy({ id: user_id });

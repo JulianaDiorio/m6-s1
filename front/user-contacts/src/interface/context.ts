@@ -1,4 +1,3 @@
-import { IContact } from "../Context";
 import { IRegister } from "./auth";
 
 export interface IUserContext {

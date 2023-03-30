@@ -6,7 +6,6 @@ import { DataContext } from "../../../Context";
 import { instance } from "../../service/axios";
 import {
     DivBorder,
-    DivDashboard,
     DivSalutation,
     HeaderDashboard,
 } from "./styled";

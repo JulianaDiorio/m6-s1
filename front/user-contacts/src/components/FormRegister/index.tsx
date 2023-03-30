@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
-import { FormReg, LabelSelect, SelectRegister } from "./styles";
+import { FormReg } from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Headline, Label, Title2 } from "../texts";
+import { Label, Title2 } from "../texts";
 import { ContainerRegister } from "../container";
 import { Input } from "../FormLogin/styles";
 import { ButtonPrimary } from "../button";

@@ -84,14 +84,14 @@ export const UserProvider = ({ children }: IChildrenProps) => {
     const sucess = (text: string) => {
         toast.success(text, {
             position: "top-center",
-            autoClose: 1000,
+            autoClose: 3000,
         });
     };
 
     const negative = (text: string) => {
         toast.error(text, {
             position: "top-center",
-            autoClose: 1000,
+            autoClose: 3000,
         });
     };
 

@@ -1,7 +1,6 @@
 import {
     DeleteContact,
     ListContact,
-    StatusContact,
     ContactItem,
     InfoContact,
     ContainerContacts,
@@ -49,7 +48,7 @@ export const Contacts = () => {
     };
 
     const names = cont
-     cont.sort(function(a, b) { 
+    cont.sort(function(a, b) { 
         if (a.name < b.name) { 
             return -1
         }
@@ -57,7 +56,6 @@ export const Contacts = () => {
             return 1
         }
         return 0})
-        console.log(names)
 
     return (
         <ListContact>

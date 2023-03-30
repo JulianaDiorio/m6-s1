@@ -1,15 +1,5 @@
 import styled from "styled-components";
 
-// export const MainDashboard = styled.main`
-//   width: 100vw;
-//   height: 100vh;
-//   background-color: var(--second-color);
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: flex-start;
-// `;
-
 export const NavDashboard = styled.nav`
   width: 60%;
   height: 6rem;

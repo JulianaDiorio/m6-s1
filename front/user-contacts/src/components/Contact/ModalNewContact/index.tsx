@@ -7,8 +7,6 @@ import {
     InputModal,
     LabelModal,
     SectionModal,
-    SelectModal,
-    SpanLabel,
     TitleRegister,
 } from "./styled";
 import { RiCloseLine } from "react-icons/ri";

@@ -42,6 +42,6 @@ export const updateUserController = async (req: Request, res: Response) => {
 };
 
 export const deleteUserController = async (req: Request, res: Response) => {
-  const softDeleteUser = await deleteUserService(req.params.user_id);
+  const softDeleteUser = await deleteUserService(req.params.id);
   return res.status(204).json(softDeleteUser);
 };

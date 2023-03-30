@@ -1,6 +1,6 @@
 import "express-async-errors";
 import "reflect-metadata";
-import express from "express";
+import express, { Request, Response } from "express";
 import "dotenv/config";
 import { userRoutes } from "./routes/users.routes";
 import { loginRoutes } from "./routes/login.routes";
@@ -14,6 +14,10 @@ app.use(cors());
 app.use("/users", userRoutes);
 app.use("/login", loginRoutes);
 app.use("/contacts", contactsRoutes);
+app.use(express.static("doc"));
+app.use("/", (req: Request, res: Response) => {
+  res.render("index.html");
+});
 
 app.use(handleError);
 

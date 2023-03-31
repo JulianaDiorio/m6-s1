@@ -38,7 +38,7 @@ export const Modal = () => {
 
     const formYup = yup.object().shape({
         name: yup.string().required("Nome do contato obrigatório"),
-        email: yup.string().required("E-mail do contato obrigatório"),
+        email: yup.string().required("E-mail do contato obrigatório").email("E-mail inválido"),
         phone: yup.string().required("Telefone do contato obrigatório"),
     });
 

@@ -41,7 +41,7 @@ export const ModalEditUser = ({ userId }: any) => {
 
     const formYup = yup.object().shape({
         name: yup.string().required("Nome é obrigatório"),
-        email: yup.string().required("E-mail é obrigatório"),
+        email: yup.string().required("E-mail é obrigatório").email("E-mail inválido"),
         phone: yup.string().required("Telefone é obrigatório"),
     });
     

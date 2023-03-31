@@ -155,7 +155,7 @@ yarn
 3. Para que seja aberta uma aba no navegador, rodando a aplicação do front-end, execute o comando:
 
 ```bash
-yarn dev
+yarn start
 ```
 
 Após isso, a integração entre back e front-end deve estar funcionando.
